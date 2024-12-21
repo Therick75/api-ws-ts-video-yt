@@ -9,13 +9,13 @@ const main = async () => {
     provider.initHttpServer(3002);
 
     // Endpoint para enviar mensajes dinámicos
-    provider.http?.server.post(
+    provider.http!.server.post(
         "/send-message",
         handleCtx(async (bot, req, res) => {
             const body = req.body;
 
             // Obtener los datos del cuerpo de la solicitud
-            const recipientNumber = body.number; // Número dinámico
+            const recipientNumber =body.number; // Número dinámico
             const message = body.message; // Mensaje dinámico
             const mediaUrl = body.mediaUrl; // URL de archivo multimedia (opcional)
 
@@ -23,7 +23,7 @@ const main = async () => {
             if (!recipientNumber || !message) {
                 res.end(
                     JSON.stringify({
-                        error: "Faltan parámetros: 'number' y 'message' son requeridos",
+                        error: "Faltan parámetros: 'numero' y 'mensaje' son requeridos",
                     })
                 );
                 return;
